@@ -71,6 +71,10 @@
             padding: 8px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             border: 3px solid rgba(102, 126, 234, 0.1);
+            width: 100%;
+            max-width: 500px;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .quick-cities {
@@ -91,6 +95,7 @@
             color: #333;
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            white-space: nowrap;
         }
 
         .city-btn:hover {
@@ -106,7 +111,8 @@
             padding: 18px 30px;
             font-size: 18px;
             border-radius: 60px;
-            width: 350px;
+            flex: 1;
+            min-width: 200px;
             background: transparent;
             color: #333;
         }
@@ -121,6 +127,8 @@
             font-size: 18px;
             font-weight: 600;
             transition: all 0.3s ease;
+            white-space: nowrap;
+            min-width: 120px;
         }
 
         #searchBtn:hover {
@@ -196,6 +204,7 @@
             justify-content: center;
             gap: 30px;
             margin: 25px 0;
+            flex-wrap: wrap;
         }
 
         .weather-icon {
@@ -209,7 +218,7 @@
         }
 
         .temp-info {
-            text-align: right;
+            text-align: center;
         }
 
         .temperature {
@@ -225,7 +234,7 @@
 
         .weather-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 20px;
             margin-top: 30px;
         }
@@ -309,7 +318,7 @@
 
         .forecast-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
             gap: 20px;
         }
 
@@ -470,7 +479,7 @@
 
         .day-info-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 20px;
         }
 
@@ -516,7 +525,7 @@
 
         .day-hourly-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
             gap: 15px;
         }
 
@@ -693,11 +702,15 @@
             height: 150px;
             margin: 20px 0;
             padding: 0 10px;
+            overflow-x: auto;
+            gap: 5px;
         }
 
         .temp-bar {
             background: linear-gradient(to top, #667eea, #764ba2);
-            width: 30px;
+            min-width: 25px;
+            width: 100%;
+            max-width: 40px;
             border-radius: 15px 15px 0 0;
             position: relative;
             transition: all 0.3s ease;
@@ -722,6 +735,7 @@
             font-size: 12px;
             opacity: 0;
             transition: opacity 0.3s ease;
+            white-space: nowrap;
         }
 
         .temp-bar:hover::after {
@@ -737,12 +751,13 @@
             background: linear-gradient(135deg, #fd79a8, #e84393);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 12px 20px;
             border-radius: 25px;
             cursor: pointer;
-            font-size: 16px;
-            margin: 0 5px;
+            font-size: 14px;
+            margin: 5px;
             transition: all 0.3s ease;
+            white-space: nowrap;
         }
 
         .share-btn:hover {
@@ -776,19 +791,20 @@
 
         .hourly-grid {
             display: flex;
-            gap: 20px;
+            gap: 15px;
             min-width: fit-content;
             padding: 10px 0;
         }
 
         .hourly-item {
             text-align: center;
-            min-width: 80px;
+            min-width: 70px;
             padding: 15px;
             border-radius: 15px;
             background: linear-gradient(135deg, #f8f9fa, #e9ecef);
             transition: all 0.3s ease;
             cursor: pointer;
+            flex-shrink: 0;
         }
 
         .hourly-item:hover {
@@ -844,30 +860,737 @@
             margin: 15px 0;
         }
 
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+                border-radius: 15px;
+                margin: 0;
+            }
+
+            h1 {
+                font-size: 2.2em;
+                margin-bottom: 25px;
+            }
+
+            .search-hint {
+                font-size: 1em;
+                padding: 10px 15px;
+                margin-bottom: 10px;
+            }
+
+            .search-container {
+                flex-direction: column;
+                align-items: stretch;
+                max-width: 100%;
+                padding: 15px;
+                border-radius: 20px;
+            }
+
+            #cityInput {
+                font-size: 16px;
+                padding: 15px 20px;
+                margin-bottom: 10px;
+                min-width: auto;
+                width: 100%;
+            }
+
+            #searchBtn {
+                font-size: 16px;
+                padding: 15px 25px;
+                min-width: auto;
+                width: 100%;
+            }
+
+            .location-btn {
+                font-size: 16px;
+                padding: 15px 20px;
+                margin: 10px 0;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .quick-cities {
+                margin-top: 15px;
+                gap: 8px;
+            }
+
+            .city-btn {
+                font-size: 12px;
+                padding: 6px 12px;
+                border-radius: 15px;
+            }
+
+            .theme-toggle {
+                top: 15px;
+                left: 15px;
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+
+            .current-weather {
+                padding: 25px;
+                border-radius: 20px;
+            }
+
+            .city-name {
+                font-size: 2em;
+                margin-bottom: 10px;
+            }
+
+            .current-date {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+
+            .weather-main {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .weather-icon {
+                font-size: 4em;
+            }
+
+            .temperature {
+                font-size: 3em;
+            }
+
+            .description {
+                font-size: 1.2em;
+            }
+
+            .weather-details {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 15px;
+                margin-top: 20px;
+            }
+
+            .detail-card {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
+            .detail-icon {
+                font-size: 2em;
+                margin-bottom: 8px;
+            }
+
+            .detail-label {
+                font-size: 0.9em;
+            }
+
+            .detail-value {
+                font-size: 1.1em;
+            }
+
+            .forecast-section {
+                padding: 20px;
+                border-radius: 20px;
+            }
+
+            .forecast-title {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            .forecast-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 15px;
+            }
+
+            .forecast-card {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
+            .forecast-day {
+                font-size: 1em;
+                margin-bottom: 10px;
+            }
+
+            .forecast-icon {
+                font-size: 2.5em;
+                margin: 10px 0;
+            }
+
+            .forecast-high {
+                font-size: 1.2em;
+            }
+
+            .forecast-low {
+                font-size: 1em;
+            }
+
+            /* Day Detail Modal - Mobile */
+            .day-detail-modal {
+                padding: 20px;
+                margin: 15px 0;
+                border-radius: 20px;
+            }
+
+            .day-detail-title {
+                font-size: 2em;
+                margin-bottom: 8px;
+            }
+
+            .day-detail-date {
+                font-size: 1.1em;
+            }
+
             .day-detail-content {
                 grid-template-columns: 1fr;
+                gap: 20px;
+                margin-bottom: 20px;
             }
-            
+
+            .day-detail-main {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
+            .day-detail-icon {
+                font-size: 3em;
+                margin-bottom: 10px;
+            }
+
+            .day-detail-temp {
+                font-size: 2em;
+                margin: 10px 0;
+            }
+
+            .day-detail-desc {
+                font-size: 1.1em;
+            }
+
+            .day-detail-info {
+                padding: 20px;
+                border-radius: 15px;
+            }
+
             .day-info-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
-            
+
+            .day-info-item {
+                padding: 15px;
+                border-radius: 10px;
+            }
+
+            .day-info-icon {
+                font-size: 1.8em;
+                margin-bottom: 8px;
+            }
+
+            .day-info-value {
+                font-size: 1.1em;
+            }
+
+            .day-hourly-forecast {
+                padding: 15px;
+                border-radius: 15px;
+                margin-top: 15px;
+            }
+
+            .day-hourly-title {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+
+            .day-hourly-grid {
+                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+                gap: 10px;
+            }
+
+            .day-hourly-item {
+                padding: 10px;
+                border-radius: 10px;
+            }
+
+            .close-detail-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+                border-radius: 20px;
+            }
+
+            /* Charts and Additional Sections - Mobile */
+            .weather-chart {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
             .temp-chart {
-                height: 100px;
+                height: 120px;
+                margin: 15px 0;
+                padding: 0 5px;
             }
-            
+
             .temp-bar {
-                width: 20px;
+                min-width: 20px;
+                max-width: 30px;
             }
-            
+
+            .temp-bar::after {
+                font-size: 10px;
+                padding: 1px 4px;
+            }
+
+            .hourly-forecast {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
             .hourly-grid {
                 gap: 10px;
             }
-            
+
             .hourly-item {
                 min-width: 60px;
                 padding: 10px;
+                border-radius: 10px;
+            }
+
+            .hourly-icon {
+                font-size: 1.8em;
+                margin: 8px 0;
+            }
+
+            .hourly-time {
+                font-size: 0.8em;
+            }
+
+            .hourly-temp {
+                font-size: 1em;
+            }
+
+            .weather-tips,
+            .weather-alerts {
+                padding: 15px;
+                border-radius: 15px;
+                font-size: 0.9em;
+            }
+
+            .weather-map {
+                padding: 15px;
+                border-radius: 15px;
+            }
+
+            .map-placeholder {
+                height: 150px;
+                font-size: 2em;
+                margin: 10px 0;
+            }
+
+            .share-section {
+                margin: 15px 0;
+            }
+
+            .share-btn {
+                padding: 10px 15px;
+                font-size: 12px;
+                margin: 3px;
+                border-radius: 20px;
+            }
+
+            .loading {
+                padding: 40px;
+                font-size: 1.1em;
+            }
+
+            .loading-icon {
+                font-size: 2.5em;
+                margin-bottom: 15px;
+            }
+
+            .error {
+                padding: 15px;
+                font-size: 1em;
+                border-radius: 10px;
+            }
+        }
+
+        /* Tablet Responsive Styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 30px;
+                max-width: 800px;
+            }
+
+            h1 {
+                font-size: 2.8em;
+                margin-bottom: 35px;
+            }
+
+            .search-container {
+                max-width: 450px;
+            }
+
+            #cityInput {
+                font-size: 17px;
+                min-width: 250px;
+            }
+
+            #searchBtn {
+                font-size: 17px;
+                padding: 17px 30px;
+            }
+
+            .weather-main {
+                gap: 25px;
+            }
+
+            .weather-icon {
+                font-size: 4.5em;
+            }
+
+            .temperature {
+                font-size: 3.5em;
+            }
+
+            .weather-details {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+
+            .forecast-grid {
+                grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            }
+
+            .day-detail-content {
+                grid-template-columns: 1fr 1.5fr;
+                gap: 25px;
+            }
+
+            .day-info-grid {
+                grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            }
+
+            .temp-chart {
+                height: 130px;
+            }
+
+            .temp-bar {
+                min-width: 22px;
+                max-width: 35px;
+            }
+
+            .hourly-item {
+                min-width: 65px;
+            }
+        }
+
+        /* Large Screen Responsive Styles */
+        @media (min-width: 1025px) {
+            .container {
+                max-width: 1000px;
+            }
+
+            .weather-details {
+                grid-template-columns: repeat(6, 1fr);
+            }
+
+            .forecast-grid {
+                grid-template-columns: repeat(7, 1fr);
+            }
+
+            .day-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .day-hourly-grid {
+                grid-template-columns: repeat(8, 1fr);
+            }
+
+            .share-btn {
+                padding: 12px 25px;
+                font-size: 16px;
+                margin: 0 8px;
+            }
+        }
+
+        /* Extra Small Screens */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+                margin-bottom: 20px;
+            }
+
+            .search-hint {
+                font-size: 0.9em;
+                padding: 8px 12px;
+            }
+
+            .search-container {
+                padding: 10px;
+            }
+
+            #cityInput, #searchBtn {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+
+            .location-btn {
+                font-size: 14px;
+                padding: 12px 15px;
+            }
+
+            .theme-toggle {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+                top: 10px;
+                left: 10px;
+            }
+
+            .current-weather {
+                padding: 20px;
+            }
+
+            .city-name {
+                font-size: 1.8em;
+            }
+
+            .weather-icon {
+                font-size: 3.5em;
+            }
+
+            .temperature {
+                font-size: 2.5em;
+            }
+
+            .description {
+                font-size: 1.1em;
+            }
+
+            .weather-details {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+
+            .detail-card {
+                padding: 12px;
+            }
+
+            .detail-icon {
+                font-size: 1.8em;
+            }
+
+            .detail-value {
+                font-size: 1em;
+            }
+
+            .forecast-title {
+                font-size: 1.5em;
+            }
+
+            .forecast-grid {
+                grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+                gap: 10px;
+            }
+
+            .forecast-card {
+                padding: 12px;
+            }
+
+            .forecast-icon {
+                font-size: 2em;
+            }
+
+            .forecast-high {
+                font-size: 1.1em;
+            }
+
+            .day-detail-modal {
+                padding: 15px;
+                margin: 10px 0;
+            }
+
+            .day-detail-title {
+                font-size: 1.8em;
+            }
+
+            .day-detail-icon {
+                font-size: 2.5em;
+            }
+
+            .day-detail-temp {
+                font-size: 1.8em;
+            }
+
+            .day-info-item {
+                padding: 12px;
+            }
+
+            .day-hourly-grid {
+                grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+                gap: 8px;
+            }
+
+            .day-hourly-item {
+                padding: 8px;
+            }
+
+            .temp-chart {
+                height: 100px;
+            }
+
+            .temp-bar {
+                min-width: 15px;
+                max-width: 25px;
+            }
+
+            .hourly-item {
+                min-width: 50px;
+                padding: 8px;
+            }
+
+            .hourly-icon {
+                font-size: 1.5em;
+            }
+
+            .share-btn {
+                padding: 8px 12px;
+                font-size: 11px;
+                margin: 2px;
+            }
+
+            .map-placeholder {
+                height: 120px;
+                font-size: 1.5em;
+            }
+        }
+
+        /* Landscape Orientation for Mobile */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .weather-main {
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .day-detail-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .day-info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .temp-chart {
+                height: 100px;
+            }
+        }
+
+        /* High DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            .weather-icon,
+            .forecast-icon,
+            .day-detail-icon,
+            .detail-icon {
+                image-rendering: -webkit-optimize-contrast;
+                image-rendering: crisp-edges;
+            }
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                font-size: 12pt;
+            }
+
+            .theme-toggle,
+            .search-section,
+            .share-section,
+            .location-btn {
+                display: none;
+            }
+
+            .container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+
+            .current-weather {
+                background: #f0f0f0;
+                color: black;
+            }
+
+            .forecast-card:hover,
+            .detail-card:hover {
+                transform: none;
+                box-shadow: none;
+            }
+        }
+
+        /* Accessibility Improvements */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .weather-icon,
+            .day-detail-icon {
+                animation: none;
+            }
+        }
+
+        /* High Contrast Mode */
+        @media (prefers-contrast: high) {
+            .container {
+                border: 2px solid black;
+            }
+
+            .detail-card,
+            .forecast-card {
+                border: 1px solid black;
+            }
+
+            .search-container {
+                border: 2px solid black;
+            }
+        }
+
+        /* Focus Styles for Better Accessibility */
+        button:focus,
+        input:focus,
+        .forecast-card:focus,
+        .detail-card:focus,
+        .hourly-item:focus,
+        .day-hourly-item:focus,
+        .city-btn:focus,
+        .temp-bar:focus {
+            outline: 3px solid #667eea;
+            outline-offset: 2px;
+        }
+
+        /* Ensure tappable elements are large enough on mobile */
+        @media (max-width: 768px) {
+            .forecast-card,
+            .detail-card,
+            .hourly-item,
+            .day-hourly-item,
+            .city-btn,
+            .share-btn,
+            button {
+                min-height: 44px;
+                min-width: 44px;
             }
         }
     </style>
@@ -1624,7 +2347,7 @@
                     <div style="font-size: 4em; margin-bottom: 20px; animation: bounce 2s infinite;">🌍</div>
                     <div style="margin-bottom: 20px; font-size: 1.5em; font-weight: 600;">مرحباً بك في موقع الطقس المتطور!</div>
                     <div style="margin-bottom: 20px; opacity: 0.8;">ادخل اسم المدينة للحصول على تقرير طقس شامل</div>
-                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 15px; margin: 20px auto; max-width: 500px; font-size: 0.9em;">
+                    <div style="background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 20px; border-radius: 15px; margin: 20px auto; max-width: 90%; font-size: 0.9em;">
                         <strong>🎯 الميزات الجديدة:</strong><br><br>
                         📍 تحديد الموقع التلقائي<br>
                         📊 مخططات بيانية تفاعلية<br>
@@ -1633,13 +2356,14 @@
                         💡 نصائح وتنبيهات ذكية<br>
                         🌙 وضع مظلم/فاتح<br>
                         📱 مشاركة على وسائل التواصل<br>
+                        📱 تصميم متجاوب لجميع الأجهزة<br>
                     </div>
-                    <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 400px; font-size: 0.9em;">
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 90%; font-size: 0.9em;">
                         <strong>🏙️ جرب هذه المدن:</strong><br>
                         Casablanca • Cairo • Dubai • Riyadh • Beirut<br>
                         Paris • London • New York • Tokyo
                     </div>
-                    <div style="background: linear-gradient(135deg, #00b894, #00a085); color: white; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 450px; font-size: 0.9em;">
+                    <div style="background: linear-gradient(135deg, #00b894, #00a085); color: white; padding: 15px; border-radius: 10px; margin: 20px auto; max-width: 90%; font-size: 0.9em;">
                         <strong>💡 نصيحة:</strong><br>
                         للحصول على أفضل النتائج، اكتب أسماء المدن بالفرنسية أو الإنجليزية<br>
                         مثال: Casablanca بدلاً من الدار البيضاء
@@ -1661,6 +2385,327 @@
                 handleSearch();
             }, 2000);
         });
+
+        // إضافة دعم Touch Events للأجهزة المحمولة
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartY = event.changedTouches[0].screenY;
+        }, { passive: true });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndY = event.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+
+        function handleSwipe() {
+            if (dayDetailModal.classList.contains('show')) {
+                const swipeDistance = touchStartY - touchEndY;
+                // إذا كان التمرير لأسفل بقوة، أغلق النافذة
+                if (swipeDistance < -100) {
+                    closeDayDetail();
+                }
+            }
+        }
+
+        // تحسين الأداء للأجهزة المحمولة
+        if (window.DeviceMotionEvent) {
+            // تقليل الرسوم المتحركة على الأجهزة المحمولة
+            document.documentElement.style.setProperty('--animation-duration', '0.2s');
+        }
+
+        // إضافة Intersection Observer لتحسين الأداء
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            });
+
+            // مراقبة العناصر عند إضافتها ديناميكياً
+            const observeElements = () => {
+                document.querySelectorAll('.forecast-card, .detail-card, .hourly-item').forEach(el => {
+                    observer.observe(el);
+                });
+            };
+
+            // تشغيل المراقب بعد تحميل البيانات
+            setTimeout(observeElements, 1000);
+        }
+
+        // إضافة دعم Service Worker للعمل بدون إنترنت (اختياري)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                // يمكن إضافة Service Worker هنا للعمل بدون إنترنت
+            });
+        }
+
+        // تحسين استهلاك البطارية
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                // إيقاف الرسوم المتحركة والعمليات غير الضرورية عند إخفاء الصفحة
+                document.querySelectorAll('.weather-icon, .day-detail-icon').forEach(el => {
+                    el.style.animationPlayState = 'paused';
+                });
+            } else {
+                // استئناف الرسوم المتحركة عند العودة للصفحة
+                document.querySelectorAll('.weather-icon, .day-detail-icon').forEach(el => {
+                    el.style.animationPlayState = 'running';
+                });
+            }
+        });
+
+        // إضافة دعم الاختصارات من لوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            // Ctrl/Cmd + K للبحث السريع
+            if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+                e.preventDefault();
+                cityInput.focus();
+                cityInput.select();
+            }
+            
+            // Ctrl/Cmd + L للموقع الحالي
+            if ((e.ctrlKey || e.metaKey) && e.key === 'l') {
+                e.preventDefault();
+                getCurrentLocation();
+            }
+            
+            // Ctrl/Cmd + D للوضع المظلم
+            if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+                e.preventDefault();
+                toggleTheme();
+            }
+        });
+
+        // تحسين الاستجابة للوحة المفاتيح الافتراضية على الجوال
+        let initialViewportHeight = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+            const currentViewportHeight = window.innerHeight;
+            const heightDifference = initialViewportHeight - currentViewportHeight;
+            
+            // إذا انخفض الارتفاع كثيراً (لوحة المفاتيح مفتوحة)
+            if (heightDifference > 150) {
+                document.body.style.height = `${currentViewportHeight}px`;
+                // تقليل padding للحصول على مساحة أكبر
+                document.querySelector('.container').style.padding = '10px';
+            } else {
+                document.body.style.height = 'auto';
+                // استعادة padding الأصلي
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.container').style.padding = '20px';
+                } else {
+                    document.querySelector('.container').style.padding = '40px';
+                }
+            }
+        });
+
+        // تحسين التمرير السلس
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // إضافة Loading States للأزرار
+        function setButtonLoading(button, isLoading) {
+            if (isLoading) {
+                button.dataset.originalText = button.textContent;
+                button.textContent = '🔄 جاري التحميل...';
+                button.disabled = true;
+                button.style.opacity = '0.7';
+            } else {
+                button.textContent = button.dataset.originalText || button.textContent;
+                button.disabled = false;
+                button.style.opacity = '1';
+            }
+        }
+
+        // تحسين دالة البحث لإضافة Loading State
+        const originalHandleSearch = handleSearch;
+        handleSearch = async function() {
+            setButtonLoading(searchBtn, true);
+            try {
+                await originalHandleSearch();
+            } finally {
+                setButtonLoading(searchBtn, false);
+            }
+        };
+
+        // تحسين دالة الموقع الحالي لإضافة Loading State
+        const originalGetCurrentLocation = getCurrentLocation;
+        getCurrentLocation = async function() {
+            setButtonLoading(locationBtn, true);
+            try {
+                await originalGetCurrentLocation();
+            } finally {
+                setButtonLoading(locationBtn, false);
+            }
+        };
+
+        // إضافة دعم إمكانية الوصول (Accessibility)
+        document.querySelectorAll('.forecast-card, .detail-card').forEach(card => {
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            
+            card.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    card.click();
+                }
+            });
+        });
+
+        // إضافة ARIA labels
+        searchBtn.setAttribute('aria-label', 'البحث عن حالة الطقس');
+        locationBtn.setAttribute('aria-label', 'الحصول على طقس الموقع الحالي');
+        themeToggle.setAttribute('aria-label', 'تغيير وضع الإضاءة');
+        cityInput.setAttribute('aria-label', 'إدخال اسم المدينة');
+
+        // تحسين أداء الرسوم المتحركة
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reducedMotion) {
+            document.documentElement.style.setProperty('--animation-duration', '0.01ms');
+        }
+
+        // إضافة دعم Dark Mode من النظام
+        const systemDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+        if (systemDarkMode.matches && !localStorage.getItem('darkMode')) {
+            toggleTheme();
+        }
+
+        // مراقبة تغييرات النظام للوضع المظلم
+        systemDarkMode.addListener((e) => {
+            if (!localStorage.getItem('darkMode')) {
+                if (e.matches && !isDarkMode) {
+                    toggleTheme();
+                } else if (!e.matches && isDarkMode) {
+                    toggleTheme();
+                }
+            }
+        });
+
+        // تحسين الأداء بتأجيل تحميل الصور والرسوم المتحركة
+        const lazyElements = document.querySelectorAll('[data-lazy]');
+        const lazyObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const element = entry.target;
+                    element.classList.add('loaded');
+                    lazyObserver.unobserve(element);
+                }
+            });
+        });
+
+        lazyElements.forEach(el => lazyObserver.observe(el));
+
+        // إضافة دعم Pull-to-Refresh على الجوال
+        let startY = 0;
+        let currentY = 0;
+        let isPulling = false;
+
+        document.addEventListener('touchstart', (e) => {
+            if (window.scrollY === 0) {
+                startY = e.touches[0].pageY;
+                isPulling = true;
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchmove', (e) => {
+            if (isPulling) {
+                currentY = e.touches[0].pageY;
+                const pullDistance = currentY - startY;
+                
+                if (pullDistance > 100) {
+                    // إضافة مؤشر بصري للـ Pull to Refresh
+                    document.body.style.transform = `translateY(${Math.min(pullDistance / 3, 50)}px)`;
+                    document.body.style.transition = 'transform 0.3s ease';
+                }
+            }
+        }, { passive: true });
+
+        document.addEventListener('touchend', () => {
+            if (isPulling && currentY - startY > 100) {
+                // تنفيذ refresh
+                if (currentWeatherData && currentCityName) {
+                    handleSearch();
+                }
+            }
+            
+            // إعادة تعيين التحويل
+            document.body.style.transform = '';
+            document.body.style.transition = '';
+            isPulling = false;
+        }, { passive: true });
+
+        // إضافة دعم الاهتزاز للتفاعل
+        function vibrate(pattern = [100]) {
+            if ('vibrate' in navigator) {
+                navigator.vibrate(pattern);
+            }
+        }
+
+        // استخدام الاهتزاز عند الأخطاء أو التنبيهات
+        const originalShowError = showError;
+        showError = function(message) {
+            vibrate([200, 100, 200]);
+            originalShowError(message);
+        };
+
+        // إضافة دعم تنبيهات النظام
+        function requestNotificationPermission() {
+            if ('Notification' in window && Notification.permission === 'default') {
+                Notification.requestPermission();
+            }
+        }
+
+        // إشعار عند تغيير الطقس بشكل كبير
+        function showWeatherNotification(title, message) {
+            if (Notification.permission === 'granted') {
+                new Notification(title, {
+                    body: message,
+                    icon: '/favicon.ico',
+                    badge: '/favicon.ico'
+                });
+            }
+        }
+
+        // تحسين استهلاك الذاكرة
+        let memoryOptimizationTimer;
+        function optimizeMemory() {
+            clearTimeout(memoryOptimizationTimer);
+            memoryOptimizationTimer = setTimeout(() => {
+                // تنظيف المتغيرات غير المستخدمة
+                if (window.gc) {
+                    window.gc();
+                }
+            }, 5000);
+        }
+
+        // استدعاء تحسين الذاكرة بعد كل عملية بحث
+        const originalDisplayWeather = displayWeather;
+        displayWeather = function(data, cityName) {
+            originalDisplayWeather(data, cityName);
+            optimizeMemory();
+        };
+
+        console.log('🌤️ موقع الطقس المتجاوب جاهز!');
+        console.log('⌨️ اختصارات لوحة المفاتيح:');
+        console.log('Ctrl/Cmd + K: البحث السريع');
+        console.log('Ctrl/Cmd + L: الموقع الحالي');
+        console.log('Ctrl/Cmd + D: الوضع المظلم');
+        console.log('Escape: إغلاق النوافذ المنبثقة');
+
     </script>
 </body>
 </html>
